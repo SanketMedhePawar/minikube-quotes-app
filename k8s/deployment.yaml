@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minikube-quotes-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minikube-quotes
+  template:
+    metadata:
+      labels:
+        app: minikube-quotes
+    spec:
+      containers:
+      - name: minikube-quotes-container
+        image: atuljkamble/minikube-quotes-app:latest
+        imagePullPolicy: IfNotPresent
+
+        ports:
+        - containerPort: 5000
